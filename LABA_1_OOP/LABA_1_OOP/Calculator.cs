@@ -10,22 +10,70 @@ namespace LABA_1_OOP
     {
         public int AND(int a, int b)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch(Exception e)
+            {
+
+            }
+            finally
+            {
+            
+            }
+            return 0;
         }
 
         public int NOT(int a, int b)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+
+            }
+            return 0;
         }
 
         public int OR(int a, int b)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+
+            }
+            return 0;
         }
 
         public int XOR(int a, int b)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+            return 0;
         }
     }
 }
