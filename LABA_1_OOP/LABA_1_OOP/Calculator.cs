@@ -12,11 +12,11 @@ namespace LABA_1_OOP
         {
             try
             {
-
+                return a & b;
             }
             catch(Exception e)
             {
-
+                Console.WriteLine("was exception - ", nameof(e));
             }
             finally
             {
@@ -25,15 +25,15 @@ namespace LABA_1_OOP
             return 0;
         }
 
-        public int NOT(int a, int b)
+        public int NOT(int a)
         {
             try
             {
-
+                return ~a;
             }
             catch (Exception e)
             {
-
+                Console.WriteLine("was exception - ", nameof(e));
             }
             finally
             {
@@ -46,15 +46,15 @@ namespace LABA_1_OOP
         {
             try
             {
-
+                return a | b;
             }
             catch (Exception e)
             {
-
+                Console.WriteLine("was exception - ", nameof(e));
             }
             finally
             {
-
+                
             }
             return 0;
         }
@@ -63,11 +63,11 @@ namespace LABA_1_OOP
         {
             try
             {
-
+                return a ^ b;
             }
-            catch
+            catch(Exception e)
             {
-
+                Console.WriteLine("was exception - ", nameof(e));
             }
             finally
             {

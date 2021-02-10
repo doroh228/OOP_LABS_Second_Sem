@@ -10,7 +10,7 @@ namespace LABA_1_OOP
     {
         int OR(int a, int b);
         int AND(int a, int b);
-        int NOT(int a, int b);
+        int NOT(int a);
         int XOR(int a, int b);
     }
 }
