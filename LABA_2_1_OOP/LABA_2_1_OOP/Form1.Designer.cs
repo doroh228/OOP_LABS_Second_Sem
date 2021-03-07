@@ -56,6 +56,7 @@ namespace LABA_2_1_OOP
             this.txtBox_fromFile = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.button_Refresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trBar_size_file)).BeginInit();
             this.SuspendLayout();
@@ -340,12 +341,24 @@ namespace LABA_2_1_OOP
             this.label11.TabIndex = 26;
             this.label11.Text = "Информация из файла";
             // 
+            // button_Refresh
+            // 
+            this.button_Refresh.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Refresh.Location = new System.Drawing.Point(187, 422);
+            this.button_Refresh.Name = "button_Refresh";
+            this.button_Refresh.Size = new System.Drawing.Size(153, 38);
+            this.button_Refresh.TabIndex = 27;
+            this.button_Refresh.Text = "Обновить";
+            this.button_Refresh.UseVisualStyleBackColor = true;
+            this.button_Refresh.Click += new System.EventHandler(this.button_Refresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1059, 550);
+            this.Controls.Add(this.button_Refresh);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtBox_fromFile);
@@ -411,6 +424,7 @@ namespace LABA_2_1_OOP
         private System.Windows.Forms.TextBox txtBox_fromFile;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button_Refresh;
     }
 }
 

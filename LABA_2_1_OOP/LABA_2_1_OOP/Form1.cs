@@ -13,12 +13,6 @@ namespace LABA_2_1_OOP
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            Program.f1 = this;
-            InitializeComponent();
-        }
-
         #region Arguments
 
         Form2 form2 = new Form2();
@@ -29,7 +23,16 @@ namespace LABA_2_1_OOP
 
         private Book book;
 
+        private CollectionBooks infoFromFile = SerializateInfo.Deserialize<CollectionBooks>("books.xml");
         #endregion
+
+        public Form1()
+        {
+            Program.f1 = this;
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
+        }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -118,9 +121,31 @@ namespace LABA_2_1_OOP
                     authors.Append($"{author.SN}({author.ID}); ");
                 }
                 ountline.AppendLine($"Список авторов: {authors}");
-                ountline.AppendLine($"------------------------------------");
+                ountline.AppendLine($"-----------------------------------------------------------------------------------------");
             }
             txtBox_fromFile.Text = ountline.ToString();
+        }
+
+        private void button_Refresh_Click(object sender, EventArgs e)
+        {
+            bool needRefrash = true;
+            StringBuilder arrayNewFormats = new StringBuilder();
+            foreach (var item in infoFromFile.books)
+            {
+                foreach (var formaters in comBox_format_file.Items)
+                {
+                    if (item.Format.ToString() == formaters.ToString())
+                    {
+                        needRefrash = false;
+                    }
+                }
+                if (needRefrash)
+                {
+                    comBox_format_file.Items.Add(item.Format.ToString());
+                }
+                needRefrash = true;
+            } //Проверка на обновления формата(горжусь этим алгоритмом, ахаха)
+
         }
     }
 }
