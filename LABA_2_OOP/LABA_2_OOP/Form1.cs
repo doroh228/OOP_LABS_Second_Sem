@@ -16,10 +16,11 @@ namespace LABA_2_OOP
         string ginere = string.Empty;
         string selectedRb = string.Empty;
         Form2 form2 = new Form2();
-
+        MyClassCollection collectionBooks = SerializateInfo.Deserialize<MyClassCollection>("books.xml");
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -82,14 +83,29 @@ namespace LABA_2_OOP
             }
             else
             {
-                Author author = new Author
+                bool canCont = true;
+                foreach (var item in collectionBooks.books)
                 {
-                    SN = form2.SN
-                };
-                Book book = new Book(textBox_name_book.Text, textBox_Id_Book.Text, textBox_from_born.Text,
-                                     comboBox_Countre.Text, ginere, dateTimePicker1.Value.Year.ToString(),selectedRb, author);
-                SerializateInfo.Serialize(book, "book.xml");
-                MessageBox.Show("Сохранено!");
+                    if (textBox_Id_Book.Text == item.Id)
+                    {
+                        MessageBox.Show("Книга с таким Id уже есть!\n Попробуйте другой :)");
+                        canCont = false;
+                        break;
+                    }
+                }
+                if (canCont)
+                {
+                    Author author = new Author
+                    {
+                        SN = form2.SN
+                    };
+                    Book book = new Book(textBox_name_book.Text, textBox_Id_Book.Text, textBox_from_born.Text,
+                                         comboBox_Countre.Text, ginere, dateTimePicker1.Value.Year.ToString(), selectedRb, author);
+                    var collection = SerializateInfo.Deserialize<MyClassCollection>("books.xml");
+                    collection.books.Add(book);
+                    SerializateInfo.Serialize(collection, "books.xml");
+                    MessageBox.Show("Сохранено!");
+                }
             }
         }
 
@@ -97,16 +113,21 @@ namespace LABA_2_OOP
         {
             try
             {
-                var desInfo = SerializateInfo.Deserialize<Book>("book.xml");
                 StringBuilder outputLine = new StringBuilder();
-                outputLine.AppendLine($"Название книги: {desInfo.Name}");
-                outputLine.AppendLine($"ID книги: {desInfo.Id}");
-                outputLine.AppendLine($"ФИО автора: {desInfo.author.SN}");
-                outputLine.AppendLine($"Название издательства: {desInfo.From}");
-                outputLine.AppendLine($"Страна производства: {desInfo.Countre}");
-                outputLine.AppendLine($"Жанр: {desInfo.Genre}");
-                outputLine.AppendLine($"Дата выхода книги: {desInfo.ReleaseDate}");
-                outputLine.AppendLine($"Переплёт: {desInfo.Binding}");
+                var desBooks = SerializateInfo.Deserialize<MyClassCollection>("books.xml");
+                foreach (var desInfo in desBooks.books)
+                {
+                    outputLine.AppendLine($"Название книги: {desInfo.Name}");
+                    outputLine.AppendLine($"ID книги: {desInfo.Id}");
+                    outputLine.AppendLine($"ФИО автора: {desInfo.author.SN}");
+                    outputLine.AppendLine($"Название издательства: {desInfo.From}");
+                    outputLine.AppendLine($"Страна производства: {desInfo.Countre}");
+                    outputLine.AppendLine($"Жанр: {desInfo.Genre}");
+                    outputLine.AppendLine($"Дата выхода книги: {desInfo.ReleaseDate}");
+                    outputLine.AppendLine($"Переплёт: {desInfo.Binding}");
+                    outputLine.AppendLine($"--------------------------------");
+                }
+                
                 textBox_info_from_file.Text = outputLine.ToString();
             }
             catch(Exception ex)

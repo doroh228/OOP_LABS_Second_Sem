@@ -19,6 +19,7 @@ namespace LABA_2_OOP
         public Form2()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -63,9 +64,29 @@ namespace LABA_2_OOP
                 textBox_SN.ReadOnly = true;
         }
 
-        private void textBox_SN_TextChanged(object sender, EventArgs e)
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.Visible = false;
+            textBox_SN.Text = string.Empty;
+            comboBox_author_from.Text = string.Empty;
+            textBox_Id_author.Text = string.Empty;
+        }
 
+        private void label4_MouseEnter(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.Red;
+            label4.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void label4_MouseLeave(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.Black;
+            label4.BorderStyle = BorderStyle.None;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
         }
     }
 }
