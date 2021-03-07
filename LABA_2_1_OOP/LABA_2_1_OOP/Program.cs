@@ -11,6 +11,8 @@ namespace LABA_2_1_OOP
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+        public static Form1 f1;
+
         [STAThread]
         static void Main()
         {

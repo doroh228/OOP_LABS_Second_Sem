@@ -46,13 +46,13 @@ namespace LABA_2_1_OOP
             this.txtBox_UDK = new System.Windows.Forms.TextBox();
             this.txtBox_Count_pages = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comBox_ = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_add_Author = new System.Windows.Forms.Button();
+            this.comBox_publishing = new System.Windows.Forms.ComboBox();
+            this.button_Save = new System.Windows.Forms.Button();
             this.txtBox_from_Form = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button_outInfo_Form = new System.Windows.Forms.Button();
+            this.button_auto_Insude = new System.Windows.Forms.Button();
+            this.button_outInfo_File = new System.Windows.Forms.Button();
             this.txtBox_fromFile = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -142,7 +142,7 @@ namespace LABA_2_1_OOP
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Script MT Bold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(387, 68);
+            this.label8.Location = new System.Drawing.Point(429, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 19);
             this.label8.TabIndex = 7;
@@ -217,6 +217,7 @@ namespace LABA_2_1_OOP
             this.txtBox_UDK.Name = "txtBox_UDK";
             this.txtBox_UDK.Size = new System.Drawing.Size(153, 20);
             this.txtBox_UDK.TabIndex = 13;
+            this.txtBox_UDK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_UDK_KeyPress);
             // 
             // txtBox_Count_pages
             // 
@@ -225,48 +226,46 @@ namespace LABA_2_1_OOP
             this.txtBox_Count_pages.Name = "txtBox_Count_pages";
             this.txtBox_Count_pages.Size = new System.Drawing.Size(153, 20);
             this.txtBox_Count_pages.TabIndex = 14;
+            this.txtBox_Count_pages.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_Count_pages_KeyPress);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(562, 66);
+            this.dateTimePicker1.Location = new System.Drawing.Point(569, 66);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(153, 20);
             this.dateTimePicker1.TabIndex = 15;
             // 
-            // button1
+            // button_add_Author
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(187, 377);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Добавить автора";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_add_Author.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_add_Author.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_add_Author.Location = new System.Drawing.Point(187, 377);
+            this.button_add_Author.Name = "button_add_Author";
+            this.button_add_Author.Size = new System.Drawing.Size(153, 23);
+            this.button_add_Author.TabIndex = 17;
+            this.button_add_Author.Text = "Добавить автора";
+            this.button_add_Author.UseVisualStyleBackColor = true;
+            this.button_add_Author.Click += new System.EventHandler(this.button_add_Author_Click);
             // 
-            // comBox_
+            // comBox_publishing
             // 
-            this.comBox_.FormattingEnabled = true;
-            this.comBox_.Items.AddRange(new object[] {
-            ".jpg",
-            ".docx",
-            ".txt"});
-            this.comBox_.Location = new System.Drawing.Point(187, 325);
-            this.comBox_.Name = "comBox_";
-            this.comBox_.Size = new System.Drawing.Size(153, 21);
-            this.comBox_.TabIndex = 18;
+            this.comBox_publishing.FormattingEnabled = true;
+            this.comBox_publishing.Location = new System.Drawing.Point(187, 325);
+            this.comBox_publishing.Name = "comBox_publishing";
+            this.comBox_publishing.Size = new System.Drawing.Size(153, 21);
+            this.comBox_publishing.TabIndex = 18;
             // 
-            // button2
+            // button_Save
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(803, 489);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(244, 49);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Сохранить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_Save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Save.Location = new System.Drawing.Point(803, 489);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(244, 49);
+            this.button_Save.TabIndex = 19;
+            this.button_Save.Text = "Сохранить";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // txtBox_from_Form
             // 
@@ -276,38 +275,40 @@ namespace LABA_2_1_OOP
             this.txtBox_from_Form.Size = new System.Drawing.Size(282, 279);
             this.txtBox_from_Form.TabIndex = 20;
             // 
-            // button3
+            // button_outInfo_Form
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(541, 489);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(244, 49);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Вывести информацию";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_outInfo_Form.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_outInfo_Form.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_outInfo_Form.Location = new System.Drawing.Point(541, 489);
+            this.button_outInfo_Form.Name = "button_outInfo_Form";
+            this.button_outInfo_Form.Size = new System.Drawing.Size(244, 49);
+            this.button_outInfo_Form.TabIndex = 21;
+            this.button_outInfo_Form.Text = "Вывести информацию";
+            this.button_outInfo_Form.UseVisualStyleBackColor = true;
+            this.button_outInfo_Form.Click += new System.EventHandler(this.button_outInfo_Form_Click);
             // 
-            // button4
+            // button_auto_Insude
             // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(16, 489);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(244, 49);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Автозаполнение";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_auto_Insude.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_auto_Insude.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_auto_Insude.Location = new System.Drawing.Point(16, 489);
+            this.button_auto_Insude.Name = "button_auto_Insude";
+            this.button_auto_Insude.Size = new System.Drawing.Size(244, 49);
+            this.button_auto_Insude.TabIndex = 22;
+            this.button_auto_Insude.Text = "Автозаполнение";
+            this.button_auto_Insude.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button_outInfo_File
             // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(281, 489);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(244, 49);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "Вывести с файла";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_outInfo_File.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_outInfo_File.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_outInfo_File.Location = new System.Drawing.Point(281, 489);
+            this.button_outInfo_File.Name = "button_outInfo_File";
+            this.button_outInfo_File.Size = new System.Drawing.Size(244, 49);
+            this.button_outInfo_File.TabIndex = 23;
+            this.button_outInfo_File.Text = "Вывести с файла";
+            this.button_outInfo_File.UseVisualStyleBackColor = true;
+            this.button_outInfo_File.Click += new System.EventHandler(this.button_outInfo_File_Click);
             // 
             // txtBox_fromFile
             // 
@@ -348,13 +349,13 @@ namespace LABA_2_1_OOP
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtBox_fromFile);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_outInfo_File);
+            this.Controls.Add(this.button_auto_Insude);
+            this.Controls.Add(this.button_outInfo_Form);
             this.Controls.Add(this.txtBox_from_Form);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.comBox_);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Save);
+            this.Controls.Add(this.comBox_publishing);
+            this.Controls.Add(this.button_add_Author);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtBox_Count_pages);
             this.Controls.Add(this.txtBox_UDK);
@@ -400,13 +401,13 @@ namespace LABA_2_1_OOP
         private System.Windows.Forms.TextBox txtBox_UDK;
         private System.Windows.Forms.TextBox txtBox_Count_pages;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comBox_;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_add_Author;
+        private System.Windows.Forms.ComboBox comBox_publishing;
+        private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.TextBox txtBox_from_Form;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button_outInfo_Form;
+        private System.Windows.Forms.Button button_auto_Insude;
+        public System.Windows.Forms.Button button_outInfo_File;
         private System.Windows.Forms.TextBox txtBox_fromFile;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;

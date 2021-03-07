@@ -30,6 +30,7 @@ namespace LABA_2_1_OOP
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lb_Close = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBox_SN = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@ namespace LABA_2_1_OOP
             this.label4 = new System.Windows.Forms.Label();
             this.txtBox_Id = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.lb_Close = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,20 @@ namespace LABA_2_1_OOP
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
+            // lb_Close
+            // 
+            this.lb_Close.AutoSize = true;
+            this.lb_Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lb_Close.ForeColor = System.Drawing.Color.DarkRed;
+            this.lb_Close.Location = new System.Drawing.Point(342, 9);
+            this.lb_Close.Name = "lb_Close";
+            this.lb_Close.Size = new System.Drawing.Size(17, 16);
+            this.lb_Close.TabIndex = 9;
+            this.lb_Close.Text = "X";
+            this.lb_Close.Click += new System.EventHandler(this.lb_Close_Click);
+            this.lb_Close.MouseEnter += new System.EventHandler(this.lb_Close_MouseEnter);
+            this.lb_Close.MouseLeave += new System.EventHandler(this.lb_Close_MouseLeave);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -65,7 +79,6 @@ namespace LABA_2_1_OOP
             this.label1.Size = new System.Drawing.Size(108, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Авторы";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -123,6 +136,7 @@ namespace LABA_2_1_OOP
             this.txtBox_Id.Name = "txtBox_Id";
             this.txtBox_Id.Size = new System.Drawing.Size(268, 29);
             this.txtBox_Id.TabIndex = 7;
+            this.txtBox_Id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_Id_KeyPress);
             // 
             // button1
             // 
@@ -140,20 +154,7 @@ namespace LABA_2_1_OOP
             this.button1.TabIndex = 8;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // lb_Close
-            // 
-            this.lb_Close.AutoSize = true;
-            this.lb_Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lb_Close.ForeColor = System.Drawing.Color.DarkRed;
-            this.lb_Close.Location = new System.Drawing.Point(342, 9);
-            this.lb_Close.Name = "lb_Close";
-            this.lb_Close.Size = new System.Drawing.Size(17, 16);
-            this.lb_Close.TabIndex = 9;
-            this.lb_Close.Text = "X";
-            this.lb_Close.Click += new System.EventHandler(this.lb_Close_Click);
-            this.lb_Close.MouseEnter += new System.EventHandler(this.lb_Close_MouseEnter);
-            this.lb_Close.MouseLeave += new System.EventHandler(this.lb_Close_MouseLeave);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
