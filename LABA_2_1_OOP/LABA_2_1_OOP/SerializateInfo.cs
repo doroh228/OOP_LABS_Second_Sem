@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace LABA_2_1_OOP
@@ -19,8 +21,15 @@ namespace LABA_2_1_OOP
             T obj;
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                XmlSerializer formatter = new XmlSerializer(typeof(T));
-                obj = (T)formatter.Deserialize(fs);
+                try
+                {
+                    XmlSerializer formatter = new XmlSerializer(typeof(T));
+                    obj = (T)formatter.Deserialize(fs);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             return obj;
         }

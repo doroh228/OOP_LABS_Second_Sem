@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace LABA_2_1_OOP
 {
@@ -29,6 +26,8 @@ namespace LABA_2_1_OOP
 
         #region Properties
         [XmlElement(ElementName = "NameBook")]
+        [Required]
+        [StringLength(50, MinimumLength = 1)]
         public string Name { get; set; }
 
         [XmlElement(ElementName = "Format")]
@@ -53,5 +52,20 @@ namespace LABA_2_1_OOP
         public ContenerAuthors Authors { get; set; }
         #endregion
 
+    }
+    public class UserNameAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            if (value != null)
+            {
+                string userName = value.ToString();
+                if (!userName.StartsWith("T"))
+                    return true;
+                else
+                    this.ErrorMessage = "Имя не должно начинаться с буквы T";
+            }
+            return false;
+        }
     }
 }

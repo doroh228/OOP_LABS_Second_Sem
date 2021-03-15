@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LABA_2_1_OOP
@@ -94,7 +90,9 @@ namespace LABA_2_1_OOP
                 #endregion
                 Author author = new Author(SN, Countre, ID);
                 Program.f1.AddAuthor(author);
+                MessageBox.Show("Save successful");
                 this.Hide();
+                
             }
             else
             {
