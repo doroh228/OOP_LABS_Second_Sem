@@ -4,10 +4,46 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LABA_2_1_OOP
 {
+    public interface IFactory
+    {
+        IProperty setProperty();
+    }
+
+    public interface IProperty
+    {
+        string Property { get; }
+    }
+
+    public class NewBook : IProperty
+    {
+        public string Property => "Новая книга";
+    }
+
+    public class OldBook : IProperty
+    {
+        public string Property => "Старая книга";
+    }
+
+    public class NewFactory : IFactory
+    {
+        public IProperty setProperty()
+        {
+            return new NewBook();
+        }
+    }
+
+    public class OldFactory : IFactory
+    {
+        public IProperty setProperty()
+        {
+            return new OldBook();
+        }
+    }
+
     [Serializable]
     [XmlRoot(Namespace = "LABA2")]
     [XmlType("BOOK")]
-    public class Book
+    public class Book : Prototype<Book>
     {
         public Book(string name, string uDK, string publishing, int sizeFile,
                     int countPages, string format, string releaseDate, ContenerAuthors authors)
@@ -30,6 +66,8 @@ namespace LABA_2_1_OOP
         [StringLength(50, MinimumLength = 1)]
         public string Name { get; set; }
 
+        [Required]
+        [StringLength(6, MinimumLength = 1)]
         [XmlElement(ElementName = "Format")]
         public string Format { get; set; }
 
@@ -63,7 +101,7 @@ namespace LABA_2_1_OOP
                 if (!userName.StartsWith("T"))
                     return true;
                 else
-                    this.ErrorMessage = "Имя не должно начинаться с буквы T";
+                    this.ErrorMessage = "Имя не должно начинаться с буквы";
             }
             return false;
         }

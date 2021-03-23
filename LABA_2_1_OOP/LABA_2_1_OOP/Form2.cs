@@ -25,6 +25,7 @@ namespace LABA_2_1_OOP
 
         public string Countre { get; set; }
 
+        public static string sId, sSn, sCountre;
         #endregion
 
         private void lb_Close_Click(object sender, EventArgs e)
@@ -82,8 +83,11 @@ namespace LABA_2_1_OOP
             {
                 #region Clearing_items
                 ID = txtBox_Id.Text;
+                sId = txtBox_Id.Text;
                 SN = txtBox_SN.Text;
+                sSn = txtBox_SN.Text;
                 Countre = comBox_countre.Text;
+                sCountre = comBox_countre.Text;
                 txtBox_Id.Text = string.Empty;
                 txtBox_SN.Text = string.Empty;
                 comBox_countre.Text = string.Empty;
@@ -99,5 +103,18 @@ namespace LABA_2_1_OOP
                 MessageBox.Show("Заполните все поля!");
             }
         }
+
+        public class MakeAuthor
+        {
+            public Author Make(AuthorBuilder builder)
+            {
+                builder.CreateAuthor();
+                builder.GetSn(sSn);
+                builder.GetId(sId);
+                builder.GetFromCountre(sCountre);
+                return builder.author;
+            }
+        }
     }
+    
 }

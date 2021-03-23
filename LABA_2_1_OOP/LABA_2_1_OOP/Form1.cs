@@ -104,6 +104,22 @@ namespace LABA_2_1_OOP
 
         private void button_outInfo_Form_Click(object sender, EventArgs e)  
         {
+            IFactory factory;
+            string properti = string.Empty;
+            if (DateTime.TryParse(dateTimePicker1.Text, out DateTime result))
+            {
+                
+                if (result < DateTime.Parse("12-12-2010"))
+                {
+                    factory = new OldFactory();
+                    properti = factory.setProperty().Property;
+                }
+                else
+                {
+                    factory = new NewFactory();
+                    properti = factory.setProperty().Property;
+                }
+            }
             StringBuilder ountline = new StringBuilder();
             ountline.AppendLine($"Название: {txtBox_Name_book.Text}");
             ountline.AppendLine($"Формат: {comBox_format_file.Text}");
@@ -112,7 +128,13 @@ namespace LABA_2_1_OOP
             ountline.AppendLine($"Количество страниц: {txtBox_Count_pages.Text}");
             ountline.AppendLine($"Издательство: {comBox_publishing.Text}");
             ountline.AppendLine($"Дата загрузки: {dateTimePicker1.Text}");
-            ountline.AppendLine($"Список авторов: {txtBox_Name_book.Text}");
+            ountline.AppendLine($"Новая/Старая: {properti}");
+            StringBuilder authors = new StringBuilder();
+            foreach (var author in collectionAuthors.authors)
+            {
+                authors.Append($"{author.SN}({author.ID}); ");
+            }
+            ountline.AppendLine($"Список авторов: {authors}");
             txtBox_from_Form.Text = ountline.ToString();
             toolStripStatusLabel_Last_do.Text = "Последние действие: Вывод с формы";
         }//out info from form
@@ -149,7 +171,7 @@ namespace LABA_2_1_OOP
                         book = new Book(txtBox_Name_book.Text, txtBox_UDK.Text, comBox_publishing.Text,
                                         trBar_size_file.Value, int.Parse(txtBox_Count_pages.Text),
                                         comBox_format_file.Text, dateTimePicker1.Text, collectionAuthors);
-
+                        var copy = book.Clone();
                         #endregion
                         infoFromFile.books.Add(book); // добавляем книгу в коллекцию
                         SerializateInfo.Serialize<CollectionBooks>(infoFromFile, "books.xml"); // сериализуем коллекцию
@@ -381,6 +403,12 @@ namespace LABA_2_1_OOP
             txtBox_Name_book.Text = string.Empty;
             comBox_format_file.Text = string.Empty;
             comBox_publishing.Text = string.Empty;
+        }
+
+        private void ToolStripMenuItem_Design_Click(object sender, EventArgs e)
+        {
+            Singleton.Design(this);
+            Singleton singleton = Singleton.getInstance();
         }
     }
 }
