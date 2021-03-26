@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -120,6 +121,12 @@ namespace LABA_2_1_OOP
                     properti = factory.setProperty().Property;
                 }
             }
+            var txtDecor = new UpperCase(new ReplaceSpace());
+            var WriteStrategy = new WriteMessage(new WriteHello());
+            var invoker = new Invoker();
+            var receiver = new Receiver();
+            invoker.SetCommand(new ConcreteCommand(receiver));
+
             StringBuilder ountline = new StringBuilder();
             ountline.AppendLine($"Название: {txtBox_Name_book.Text}");
             ountline.AppendLine($"Формат: {comBox_format_file.Text}");
@@ -129,6 +136,9 @@ namespace LABA_2_1_OOP
             ountline.AppendLine($"Издательство: {comBox_publishing.Text}");
             ountline.AppendLine($"Дата загрузки: {dateTimePicker1.Text}");
             ountline.AppendLine($"Новая/Старая: {properti}");
+            ountline.AppendLine($"проверка патерна Декоратора: {txtDecor.GetFormaterText("Hello, my name is Sergey)")}");
+            ountline.AppendLine($"Strategy: {WriteStrategy.Move()}");
+            ountline.AppendLine($"Command: {invoker.Run()}");
             StringBuilder authors = new StringBuilder();
             foreach (var author in collectionAuthors.authors)
             {
@@ -410,5 +420,160 @@ namespace LABA_2_1_OOP
             Singleton.Design(this);
             Singleton singleton = Singleton.getInstance();
         }
+
+        private void adapter_ToolStrip_Click(object sender, EventArgs e)
+        {
+            IEditBackColor chenge = new Adapter();
+            chenge.Change(this);
+        }
     }
+
+    #region Adepter
+
+    interface IEditBackColor
+    {
+        void Change(Form form);
+    }
+
+    public class AlsoChangeColor
+    {
+        public void EditColor(Form form)
+        {
+            form.BackColor = Color.Red;
+        }
+    }
+
+    public class Adapter : AlsoChangeColor, IEditBackColor
+    {
+        public void Change(Form form)
+        {
+            this.EditColor(form);
+        }
+    }
+    #endregion
+    #region Decorator
+
+    public abstract class EditOfTextBase
+    {
+        private readonly EditOfTextBase _editOfTextBase;
+
+        protected EditOfTextBase(EditOfTextBase editOfTextBase = null)
+        {
+            _editOfTextBase = editOfTextBase;
+        }
+
+        public virtual string GetFormaterText(string txt)
+        {
+            if(_editOfTextBase != null)
+            {
+                txt = _editOfTextBase.GetFormaterText(txt);
+            }
+            return txt;
+        }
+    }
+
+    public class UpperCase : EditOfTextBase
+    {
+        public UpperCase(EditOfTextBase editOfTextBase = null) : base(editOfTextBase) { }
+        public override string GetFormaterText(string txt)
+        {
+            return base.GetFormaterText(txt)?.ToUpper();
+        }
+    }
+
+    public class ReplaceSpace : EditOfTextBase
+    {
+        public ReplaceSpace(EditOfTextBase editOfTextBase = null) : base(editOfTextBase) { }
+
+        public override string GetFormaterText(string txt)
+        {
+            return base.GetFormaterText(txt)?.Replace(' ', '+');
+        }
+    }
+    #endregion
+
+    #region Strategy
+
+    interface IWrite
+    {
+        string Move();
+    }
+
+    class WriteHello : IWrite
+    {
+        public string Move() => "Hello";
+        
+    }
+
+    class WriteGoodBye : IWrite
+    {
+        public string Move() => "GoodBye";
+    }
+    class WriteMessage
+    {
+        public WriteMessage(IWrite mov)
+        {
+            Writer = mov;
+        }
+        public IWrite Writer { private get; set; }
+        public string Move()
+        {
+            
+            return Writer.Move();
+        }
+    }
+    #endregion
+
+    #region Command
+
+    abstract class Command
+    {
+        public abstract string Execute();
+        public abstract string Undo();
+    }
+
+    class ConcreteCommand : Command
+    {
+        Receiver receiver;
+        public ConcreteCommand(Receiver r)
+        {
+            receiver = r;
+        }
+        public override string Execute()
+        {
+            return receiver.Operation();
+        }
+
+        public override string Undo()
+        {
+            return "Stoping";
+        }
+    }
+
+    class Receiver
+    {
+        public string Operation()
+        {
+            return "in Working";        
+        }
+    }
+
+    class Invoker
+    {
+        Command command;
+        public void SetCommand(Command c)
+        {
+            command = c;
+        }
+        public string Run()
+        {
+            return command.Execute();
+        }
+        public string Cancel()
+        {
+            return command.Undo();
+        }
+    }
+
+    #endregion
 }

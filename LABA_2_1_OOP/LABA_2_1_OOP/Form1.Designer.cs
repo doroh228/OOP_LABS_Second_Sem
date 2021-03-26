@@ -73,6 +73,7 @@ namespace LABA_2_1_OOP
             this.ToolStripMenuItem_Design = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_Last_do = new System.Windows.Forms.ToolStripStatusLabel();
+            this.adapter_ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trBar_size_file)).BeginInit();
@@ -456,7 +457,8 @@ namespace LABA_2_1_OOP
             this.ToolStripMenuItem_Sort_in_file,
             this.ToolStripMenuItem_Save_Search_Sort,
             this.look_ToolStripMenuItem,
-            this.ToolStripMenuItem_Design});
+            this.ToolStripMenuItem_Design,
+            this.adapter_ToolStrip});
             this.menuStrip_Form1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_Form1.Name = "menuStrip_Form1";
             this.menuStrip_Form1.Size = new System.Drawing.Size(1059, 24);
@@ -521,6 +523,13 @@ namespace LABA_2_1_OOP
             this.toolStripStatusLabel_Last_do.Name = "toolStripStatusLabel_Last_do";
             this.toolStripStatusLabel_Last_do.Size = new System.Drawing.Size(123, 17);
             this.toolStripStatusLabel_Last_do.Text = "Последние действие:";
+            // 
+            // adapter_ToolStrip
+            // 
+            this.adapter_ToolStrip.Name = "adapter_ToolStrip";
+            this.adapter_ToolStrip.Size = new System.Drawing.Size(61, 20);
+            this.adapter_ToolStrip.Text = "Adapter";
+            this.adapter_ToolStrip.Click += new System.EventHandler(this.adapter_ToolStrip_Click);
             // 
             // Form1
             // 
@@ -621,6 +630,7 @@ namespace LABA_2_1_OOP
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Last_do;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Design;
+        private System.Windows.Forms.ToolStripMenuItem adapter_ToolStrip;
     }
 }
 

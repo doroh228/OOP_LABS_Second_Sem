@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LABA_2_1_OOP
 {
+    #region Paterns
+
+
     public interface IFactory
     {
         IProperty setProperty();
@@ -39,6 +42,9 @@ namespace LABA_2_1_OOP
             return new OldBook();
         }
     }
+
+    #endregion
+
 
     [Serializable]
     [XmlRoot(Namespace = "LABA2")]
