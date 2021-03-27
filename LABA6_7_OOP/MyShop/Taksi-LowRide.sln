@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShop", "MyShop\MyShop.csproj", "{940029B9-0653-43AD-8D37-4E85A2FD8158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyShop", "MyShop\MyShop.csproj", "{940029B9-0653-43AD-8D37-4E85A2FD8158}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2B02D215-365F-418D-9A2F-F203E83662BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShop", "Tests\TestShop\TestShop.csproj", "{8CDB2926-0CA4-48F5-8DCB-720986AF2BD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestShop", "Tests\TestShop\TestShop.csproj", "{8CDB2926-0CA4-48F5-8DCB-720986AF2BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShopConsole", "Tests\MyShopConsole\MyShopConsole.csproj", "{4745DF44-8221-4893-A832-12D56F513161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyShopConsole", "Tests\MyShopConsole\MyShopConsole.csproj", "{4745DF44-8221-4893-A832-12D56F513161}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
