@@ -24,5 +24,31 @@ namespace Test
         {
             InitializeComponent();
         }
+
+        private void EscButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        } // close the LogIn Window
+
+        private void HideButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }// Hide the LogIn Window
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void LogoContainer_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }
