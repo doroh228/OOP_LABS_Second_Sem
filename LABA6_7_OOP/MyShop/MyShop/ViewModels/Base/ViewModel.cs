@@ -25,7 +25,7 @@ namespace MyShop.ViewModels.Base
         //~ViewModel()
         //{
         //    Dispose(false);
-        //}
+        //}it's a for example
 
         public void Dispose()
         {
