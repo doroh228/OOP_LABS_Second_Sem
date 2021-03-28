@@ -50,5 +50,17 @@ namespace Test
                 this.DragMove();
             }
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (tb2.Password.Length > 0)
+            {
+                watermark.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                watermark.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

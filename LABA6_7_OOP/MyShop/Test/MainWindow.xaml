@@ -18,23 +18,6 @@
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
-        <Style x:Key="CombButton" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="Black"
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style x:Key="txtBox" TargetType="TextBox">
             <Setter Property="Background" Value="#FFE4E8A8"/>
             <Setter Property="BorderBrush" Value="#FF9B9999"/>
@@ -46,6 +29,49 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="root"
+                              Height="{TemplateBinding Height}"
+                              Width="{TemplateBinding Width}"
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="Background"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          BorderThickness="0"
+                                          Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False"
+                                          Background="{x:Null}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFE2E2E0"/>
+                                <Setter Property="BorderBrush" Value="#FF646363"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="#FFE0E0DE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PB" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#FFE4E8A8"/>
+            <Setter Property="BorderBrush" Value="#FF9B9999"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <EventSetter Event="PasswordChanged" Handler="PasswordBox_PasswordChanged"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
                         <Grid x:Name="root"
                               Height="{TemplateBinding Height}"
                               Width="{TemplateBinding Width}"
@@ -155,24 +181,14 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="tb2" Grid.Row="2" Style="{StaticResource txtBox}" Margin="25,125,25,0" VerticalAlignment="Top"/>
-        <TextBlock IsHitTestVisible="False"
+        <PasswordBox x:Name="tb2" Grid.Row="2" Style="{StaticResource PB}" Margin="25,125,25,0" VerticalAlignment="Top"/>
+        <TextBlock Name="watermark" IsHitTestVisible="False"
                    FontSize="14"
                    Text="Password"
                    Grid.Row="2"
                    Margin="37,133,0,0"
                    VerticalAlignment="Top"
                    Foreground="#FF646363">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=tb2}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
         </TextBlock>
         <Border Name="ButBorder"
                 Grid.Row="2"
@@ -223,7 +239,6 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-
                 </Button.Style>
             </Button>
         </Border>
