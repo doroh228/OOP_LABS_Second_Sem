@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="425" Width="365"
+        Height="400" Width="365"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
@@ -35,7 +35,7 @@
                               SnapsToDevicePixels="True">
                             <Border x:Name="Background"
                                     BorderThickness="1"
-                                    CornerRadius="2"
+                                    CornerRadius="20"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}">
                             </Border>
@@ -78,7 +78,7 @@
                               SnapsToDevicePixels="True">
                             <Border x:Name="Background"
                                     BorderThickness="1"
-                                    CornerRadius="2"
+                                    CornerRadius="20"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}">
                             </Border>
@@ -103,11 +103,11 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Margin="0,0,0,10">
+    <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="110"/>
-            <RowDefinition Height="290"/>
+            <RowDefinition Height="265"/>
         </Grid.RowDefinitions>
         <Grid Name="ToolBar"
               Background="Transparent"
@@ -196,23 +196,25 @@
                 Height="35"
                 VerticalAlignment="Top"
                 BorderThickness="1"
+                CornerRadius="20"
                 Background="#FF838383">
             <Border.Style>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="BorderBrush" Value="#FF4EF500"/>
                 </Style>
             </Border.Style>
-            
-            <Button Content="Log in" FontSize="16" Foreground="White" Cursor="Hand">
+            <Button Content="Log in" FontSize="16" Foreground="White" Cursor="Hand" HorizontalAlignment="Left" Width="313">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="OverridesDefaultStyle" Value="True"/>
-                        <Setter Property="Background" Value="Green"/>
+                        <Setter Property="Background" Value="#FF28A064"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
                                     <Border Name="border"
-                                            BorderThickness="0" BorderBrush="Black"
+                                            BorderThickness="0"
+                                            BorderBrush="Black"
+                                            CornerRadius="20"
                                             Background="{TemplateBinding Background}">
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
