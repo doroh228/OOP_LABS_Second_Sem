@@ -12,9 +12,9 @@
         WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FFE9F30D" Offset="0.003"/>
-            <GradientStop Color="#FFE9F30D" Offset="1"/>
-            <GradientStop Color="#FFD8D020" Offset="0.512"/>
+            <GradientStop Color="#FFFDDB00" Offset="0.003"/>
+            <GradientStop Color="#FFFDF108" Offset="1"/>
+            <GradientStop Color="#FFFFDD00" Offset="0.512"/>
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
