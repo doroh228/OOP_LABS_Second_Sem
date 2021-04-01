@@ -13,13 +13,22 @@
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0"
+        <StackPanel>
+            <Button Grid.Column="0"
                 Height="35" Width="250"
                 VerticalAlignment="Top"
-                Margin="10, 20"
+                Margin="10, 20, 10, 0"
                 Content="Hello"
                 FontSize="16"/>
-        <Track Name="dynamic" Grid.Column="1"
+            <Button Grid.Column="0"
+                Height="35" Width="250"
+                VerticalAlignment="Top"
+                Margin="10, 20, 10, 0"
+                Content="Hello"
+                FontSize="16"/>
+        </StackPanel>
+        
+        <Frame Name="dynamic" Grid.Column="1"
                />
     </Grid>
 </Window>
