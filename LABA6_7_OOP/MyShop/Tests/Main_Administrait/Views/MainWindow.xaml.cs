@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Main_Administrait.ViewModuls;
 
 namespace Main_Administrait
 {
@@ -10,6 +11,7 @@ namespace Main_Administrait
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModuls();
         }
     }
 }

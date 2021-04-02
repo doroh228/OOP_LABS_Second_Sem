@@ -5,30 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Main_Administrait"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650"
-        Width="1000"
+        Title="MainWindow"
+        Height="650" Width="1000"
         Background="#FF383434">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0">
             <Button Grid.Column="0"
-                Height="35" Width="250"
-                VerticalAlignment="Top"
-                Margin="10, 20, 10, 0"
-                Content="Hello"
-                FontSize="16"/>
+                    Height="35" Width="250"
+                    VerticalAlignment="Top"
+                    Margin="10, 20, 10, 0"
+                    Content="Hello"
+                    FontSize="16"
+                    Command="{Binding bRegister_Click}"/>
             <Button Grid.Column="0"
-                Height="35" Width="250"
-                VerticalAlignment="Top"
-                Margin="10, 20, 10, 0"
-                Content="Hello"
-                FontSize="16"/>
+                    Height="35" Width="250"
+                    VerticalAlignment="Top"
+                    Margin="10, 20, 10, 0"
+                    Content="Good bye"
+                    FontSize="16"
+                    Command="{Binding bOutput_Click}"/>
         </StackPanel>
         
         <Frame Name="dynamic" Grid.Column="1"
-               />
+               Content="{Binding CurrentPage}"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

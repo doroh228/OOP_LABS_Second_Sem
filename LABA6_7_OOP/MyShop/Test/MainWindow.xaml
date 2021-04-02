@@ -200,7 +200,7 @@
                 Background="#FF838383">
             <Border.Style>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="BorderBrush" Value="#FF4EF500"/>
+                    <Setter Property="BorderBrush" Value="#FF43424B"/>
                 </Style>
             </Border.Style>
             <Button Content="Log in" FontSize="16" Foreground="White" Cursor="Hand" HorizontalAlignment="Left" Width="313">
