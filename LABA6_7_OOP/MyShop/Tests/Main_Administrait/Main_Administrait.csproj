@@ -70,7 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\SerializeInfo.cs" />
     <Compile Include="ViewModuls\MainViewModuls.cs" />
+    <Compile Include="ViewModuls\ViewModulsPages\RegistrationViewModul.cs" />
     <Compile Include="Views\Pages\OutputPage.xaml.cs">
       <DependentUpon>OutputPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Moduls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lada_PNG34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pencil-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

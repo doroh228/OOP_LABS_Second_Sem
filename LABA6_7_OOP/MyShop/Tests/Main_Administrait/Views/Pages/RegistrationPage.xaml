@@ -8,12 +8,104 @@
       d:DesignHeight="650" d:DesignWidth="709"
       Title="RegistrationPage"
       Background="#FF383434">
-
+    <Page.Resources>
+        
+    </Page.Resources>
     <Grid>
-        <TextBlock Text="Hello world"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="24"
-                   FontWeight="Bold"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0"
+              Margin="30, 30, 0, 0"
+              Width="250"
+              Height="270">
+        <Image Grid.Column="0" Grid.Row="0"
+               Width="250"
+               Height="270"
+               HorizontalAlignment="Left"
+               Panel.ZIndex="0"
+               Source="{Binding CurrentImage}"/>
+        <Button Grid.Column="0" Grid.Row="0"
+                Width="250"
+                Height="270"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Content="Add picture"
+                Panel.ZIndex="1"
+                Command="{Binding ChangeVisibilityH}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="#FFDCD3D3"/>
+                    <Setter Property="Visibility" Value="{Binding Visibility}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border"
+                                        BorderThickness="2"
+                                        BorderBrush="#FFC7A2A2"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="#FF43E8AC"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="0"
+                Width="30"
+                Height="30"
+                Margin="12, 10"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Panel.ZIndex="2"
+                Command="{Binding ChangeVisibilityH}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#FFE6E2E2"/>
+                    <Setter Property="BorderBrush" Value="#FFDCD3D3"/>
+                    <Setter Property="Visibility" Value="{Binding ViisabilityPancil}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border"
+                                        BorderThickness="0"
+                                        CornerRadius="8"
+                                        BorderBrush="#FFC3B0B0"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.ContentTemplate >
+                <DataTemplate >
+                    <Image   Source="/Main_Administrait;component/Images/Pencil-icon.png" />
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+            <Border Width="250" Height="270" CornerRadius="20" BorderThickness="2" BorderBrush="#FFDCD3D3">
+            </Border>
+        </Grid>
     </Grid>
 </Page>

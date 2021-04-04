@@ -18,20 +18,24 @@
                     Height="35" Width="250"
                     VerticalAlignment="Top"
                     Margin="10, 20, 10, 0"
-                    Content="Hello"
-                    FontSize="16"
+                    Content="Данные"
+                    FontSize="20"
                     Command="{Binding bRegister_Click}"/>
             <Button Grid.Column="0"
                     Height="35" Width="250"
                     VerticalAlignment="Top"
                     Margin="10, 20, 10, 0"
                     Content="Good bye"
-                    FontSize="16"
+                    FontSize="20"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Foreground="#FF74E4F0"
                     Command="{Binding bOutput_Click}"/>
         </StackPanel>
         
-        <Frame Name="dynamic" Grid.Column="1"
+        <Frame x:Name="dynamicPage" Grid.Column="1"
                Content="{Binding CurrentPage}"
+               Opacity="{Binding FrameOpacity}"
                NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

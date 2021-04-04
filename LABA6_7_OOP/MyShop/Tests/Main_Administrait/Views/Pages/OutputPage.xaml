@@ -15,5 +15,10 @@
                    HorizontalAlignment="Center"
                    FontSize="24"
                    FontWeight="Bold"/>
+        <TextBlock Text="Yes"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   FontSize="24"
+                   FontWeight="Bold"/>
     </Grid>
 </Page>
