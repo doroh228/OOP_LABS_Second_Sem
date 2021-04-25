@@ -3,22 +3,83 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:Main_Administrait.ViewModuls.ViewModulsPages"
+      xmlns:mcar="clr-namespace:Main_Administrait.Models"
       xmlns:local="clr-namespace:Main_Administrait.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="709"
       Title="OutputPage"
       Background="#FF383434">
-
+    <Page.DataContext>
+        <vm:OutputViewModel/>
+    </Page.DataContext>
     <Grid>
-        <TextBlock Text="Good bye"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="24"
-                   FontWeight="Bold"/>
-        <TextBlock Text="Yes"
-                   VerticalAlignment="Bottom"
-                   HorizontalAlignment="Center"
-                   FontSize="24"
-                   FontWeight="Bold"/>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Cars" Margin="10" FontSize="22" FontWeight="Medium"/>
+                    <Button Content="Refrash" Margin="20 0" Command="{Binding RefrashCarsCommand}"/>
+                    <Button Content="Edit" Margin="20 0" Command="{Binding EditCarCommand}"/>
+                    <Button Content="Delete" Margin="20 0" Command="{Binding DeleteCarCommand}"/>
+                </StackPanel>
+                <StackPanel Margin="20 0">
+                    <ListView x:Name="carsList" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="140" Header="Picture">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding PathToPicture}" Height="70" Width="90" Margin="20,20,0,0"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" Header="VIN">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=VinNumber}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" Header="ClassOfCar">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=ClassOfCar}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="90" Header="Brand">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Brand}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="90" Header="NumberPlate">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=NumberPlate}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="75" Header="Color">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=ColorOfCar}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" Header="Motes">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Notes}" FontSize="14" FontWeight="Medium"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

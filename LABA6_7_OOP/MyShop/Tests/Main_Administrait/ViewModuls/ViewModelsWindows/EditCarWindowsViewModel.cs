@@ -1,18 +1,22 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
-using System.Windows.Input;
-using Main_Administrait.Models;
-using Main_Administrait.Helpers;
+﻿using System;
 using System.Collections.Generic;
+using Main_Administrait.Models;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Main_Administrait.ViewModuls;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
 using System.Windows;
+using Main_Administrait.Helpers;
 
-namespace Main_Administrait.ViewModuls.ViewModulsPages
+namespace Main_Administrait.ViewModuls.ViewModelsWindows
 {
-    class RegistrationViewModul : Base.ViewModuls
+    class EditCarWindowsViewModel : Base.ViewModuls
     {
-        #region Fields
 
         #region Properties
+        private Car _currentCar;
         private List<Car> _cars = new List<Car>();
         private string _pathToPicture;
         private string _vinNumber;
@@ -90,10 +94,8 @@ namespace Main_Administrait.ViewModuls.ViewModulsPages
         public string Notes
         {
             get => _notes;
-            set => Set(ref _notes,value);
+            set => Set(ref _notes, value);
         }
-
-        #endregion
 
         #region Image
         private string _visability;
@@ -115,13 +117,23 @@ namespace Main_Administrait.ViewModuls.ViewModulsPages
 
         #endregion
 
-        public RegistrationViewModul()
+        public EditCarWindowsViewModel(Car car)
         {
-            PathToPicture = string.Empty;
-            ViisabilityPancil = "Hidden";
-            Visibility = "Visible";
+            PathToPicture = car.PathToPicture;
+            Brand = car.Brand;
+            ClassOfCar = car.ClassOfCar;
+            NumberPlate = car.NumberPlate;
+            ColorOfCar = car.ColorOfCar;
+            VinNumber = car.VinNumber;
+            Notes = car.Notes;
+            ViisabilityPancil = "Visible";
+            Visibility = "Hidden";
+            Cars = SerializeInfo.Deserialize<List<Car>>("test.xml");
+            _currentCar = car;
         }
-
+        public EditCarWindowsViewModel()
+        {
+        }
 
         #region ICommands
 
@@ -184,40 +196,59 @@ namespace Main_Administrait.ViewModuls.ViewModulsPages
             {
                 return new RelayCommand(() =>
                 {
-                    bool contien = false;
-                    Car _car = new Car(PathToPicture, Brand, ClassOfCar, NumberPlate, ColorOfCar, VinNumber, Notes);
-                    Cars = SerializeInfo.Deserialize<List<Car>>("test.xml");
-                    foreach (var car in Cars)
-                    {
-                        if(car.VinNumber == _car.VinNumber)
-                        {
-                            MessageBox.Show("Машина с таким VIN-номером уже есть");
-                        }
-                        else
-                        {
-                            contien = true;
-                        }
-                    }
-                    if (contien)
-                    {
-                        Cars.Add(_car);
-                        SerializeInfo.Serialize<List<Car>>(Cars, "test.xml");
-                        MessageBox.Show("Save successfully", "Info");
-                    }
-                    #region Clearing
 
-                    PathToPicture = string.Empty;
-                    Brand = string.Empty;
-                    ClassOfCar = string.Empty;
-                    NumberPlate = string.Empty;
-                    ColorOfCar = string.Empty;
-                    VinNumber = string.Empty;
-                    Notes = string.Empty;
-                    ViisabilityPancil = "Hidden";
-                    Visibility = "Visible";
-                    
+                    if (string.IsNullOrEmpty(VinNumber) || string.IsNullOrEmpty(Notes) || string.IsNullOrEmpty(ClassOfCar) || string.IsNullOrEmpty(PathToPicture))
+                    {
+                        MessageBox.Show("Заполните все поля");
+                    }
+                    else
+                    {
+                        bool contien = false;
+                        Car _car = new Car(PathToPicture, Brand, ClassOfCar, NumberPlate, ColorOfCar, VinNumber, Notes);
+                        foreach (var car in Cars)
+                        {
+                            if (_car.VinNumber == _currentCar.VinNumber || _car.VinNumber != car.VinNumber)
+                            {
+                                contien = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Машина с таким VIN-номером уже есть");
+                            }
+                        }
+                        if (contien)
+                        {
+                            foreach (var car in Cars)
+                            {
+                            if (_currentCar.VinNumber == car.VinNumber)
+                                {
+                                    car.VinNumber = _car.VinNumber;
+                                    car.PathToPicture = _car.PathToPicture;
+                                    car.Brand = _car.Brand;
+                                    car.ClassOfCar = _car.ClassOfCar;
+                                    car.ColorOfCar = _car.ColorOfCar;
+                                    car.NumberPlate = _car.NumberPlate;
+                                    car.Notes = _car.Notes;
+                                }
+                            }
+                            SerializeInfo.Serialize<List<Car>>(Cars, "test.xml");
+                            MessageBox.Show("Edited seccsesfull");
+                            
+                            #region Clearing
 
-                    #endregion
+                            PathToPicture = string.Empty;
+                            Brand = string.Empty;
+                            ClassOfCar = string.Empty;
+                            NumberPlate = string.Empty;
+                            ColorOfCar = string.Empty;
+                            VinNumber = string.Empty;
+                            Notes = string.Empty;
+                            ViisabilityPancil = "Hidden";
+                            Visibility = "Visible";
+                        }
+
+                        #endregion
+                    }
                 });
             }
         }

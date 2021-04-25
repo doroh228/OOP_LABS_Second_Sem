@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Main_Administrait.Views.Pages;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -9,6 +10,7 @@ namespace Main_Administrait.ViewModuls
 {
     class MainViewModuls : ViewModuls.Base.ViewModuls
     {
+        private List<string> _menuLanguage;
         private Page Welcome;
         private Page GoodBye;
         private Page _currentPage;
@@ -23,6 +25,12 @@ namespace Main_Administrait.ViewModuls
             {
                 Set(ref _frameOpacity, value);
             }
+        }
+
+        public List<string> MenuLanguage
+        {
+            get => _menuLanguage;
+            set => Set(ref _menuLanguage, value);
         }
 
         public Page CurrentPage
@@ -61,13 +69,13 @@ namespace Main_Administrait.ViewModuls
                 for (double i = 1; i > 0.0; i -= 0.1)
                 {
                     FrameOpacity = i;
-                    Thread.Sleep(50);
+                    Thread.Sleep(30);
                 }
                 CurrentPage = page;
                 for (double i = 0.0; i <= 1; i += 0.1)
                 {
                     FrameOpacity = i;
-                    Thread.Sleep(50);
+                    Thread.Sleep(30);
                 }
             });
         }

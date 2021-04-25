@@ -3,36 +3,92 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Main_Administrait.ViewModuls"
         xmlns:l="clr-namespace:Main_Administrait"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="{DynamicResource m_Title}"
         Height="650" Width="1000"
         Background="#FF383434">
+    <Window.DataContext>
+        <vm:MainViewModuls/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FF858585"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                                            BorderThickness="0"
+                                            BorderBrush="Black"
+                                            CornerRadius="10"
+                                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFEAEEEC"/>
+                            </Trigger>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFDAD3D1" Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFEAEEEC" Duration="0:0:0.05"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Button Grid.Column="0"
-                    Height="35" Width="250"
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF464743" Offset="0.518"/>
+                    <GradientStop Color="#FF2F302C" Offset="1"/>
+                    <GradientStop Color="#FF323C38"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Height="35"
                     VerticalAlignment="Top"
                     Margin="10, 20, 10, 0"
-                    Content="Данные"
+                    Content="Add car/driver"
                     FontSize="20"
+                    Style="{StaticResource Button}"
                     Command="{Binding bRegister_Click}"/>
-            <Button Grid.Column="0"
-                    Height="35" Width="250"
+            <Button Height="35"
                     VerticalAlignment="Top"
                     Margin="10, 20, 10, 0"
-                    Content="Good bye"
+                    Content="DateBase"
                     FontSize="20"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Foreground="#FF74E4F0"
+                    Style="{StaticResource Button}"
                     Command="{Binding bOutput_Click}"/>
+            <Menu DockPanel.Dock="Top"
+                  HorizontalAlignment="Center"
+                  FontSize="18"
+                  Margin="0 100 0 0"
+                  Foreground="#FF569DA4"
+                  Background="#FFF1ECEC"
+                  ItemsSource="">
+                <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            </Menu>
         </StackPanel>
-        
+
         <Frame x:Name="dynamicPage" Grid.Column="1"
                Content="{Binding CurrentPage}"
                Opacity="{Binding FrameOpacity}"

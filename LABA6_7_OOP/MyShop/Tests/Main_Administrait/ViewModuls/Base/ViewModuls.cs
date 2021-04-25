@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Main_Administrait.ViewModuls.Base
 {
-    class ViewModuls : INotifyPropertyChanged
+    public abstract class ViewModuls : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
